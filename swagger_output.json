@@ -1,0 +1,49 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "example"
+    }
+  ],
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Users router"
+    },
+    {
+      "name": "Bids",
+      "description": "Courses router"
+    },
+    {
+      "name": "Posts",
+      "description": "Posts router"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "看server是否運作",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
