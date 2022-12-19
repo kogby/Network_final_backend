@@ -1,6 +1,6 @@
 const template = {
     host: "localhost:3000",
-    servers: [{ url: "http://localhost:3000", description: "example" }],
+    servers: [{ url: "http://localhost:4000", description: "example" }],
     tags: [
         // by default: empty Array
         {

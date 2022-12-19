@@ -1,6 +1,4 @@
-import {db} from "../../db.js";
-
-export const getAllPosts  = async (req, res) =>{
+export const getPersonPosts  = async (req, res) =>{
   /* #swagger.tags = ['Posts']
   #swagger.description = 'Get all posts' */
   var query ='SELECT * FROM POST';
