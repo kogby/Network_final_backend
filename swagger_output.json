@@ -59,6 +59,23 @@
         }
       }
     },
+    "/posts/{name}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "description": "Get one",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/posts/{id}": {
       "delete": {
         "tags": [
