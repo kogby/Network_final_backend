@@ -32,8 +32,13 @@ app.use(
 app.use("/posts", postRoutes);
 
 
+
 app.get("/", (req, res) => {
   /* #swagger.description = '看server是否運作' */
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+  res.setHeader('Access-Control-Allow-Credentials', true); // If needed
   return res.status(200).send("The server is running.");
 });
 

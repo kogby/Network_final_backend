@@ -3,7 +3,8 @@ import mysql from "mysql"
 export const getAllPosts = async (req, res) => {
   /* #swagger.tags = ['Posts']
   #swagger.description = 'Get all posts' */
-  var query = 'SELECT * FROM POST';
+  var query = `
+  SELECT * FROM ITEM INNER JOIN POST ON ITEM.POST_TITLE = POST.POST_TITLE;`;
 
   var db = mysql.createConnection({
     // connectTimeout  : 60 * 60 * 1000,
@@ -12,13 +13,46 @@ export const getAllPosts = async (req, res) => {
     port: process.env.DB_PORT,
     user: "root",
     password: "123456",
-    database: "shoppingDB"
+    database: "shoppingDB",
+    multipleStatements: true
   })
   db.connect();
-  db.query(query, function (err, rows, fields) {
+
+  var allbids;
+  const postBids = async (post_name) => {
+    var query_bid = `SELECT * FROM ITEM JOIN BID ON ITEM.ITEM_ID = BID.ITEM_ID
+    JOIN POST ON ITEM.POST_TITLE = ?`;
+    await db.query(query_bid, [post_name], (err, rows, fields) => {
+      if (err) throw err;
+      allbids = rows.map((row) => {
+        return {
+          whoBids: row.USER_NAME,
+          bPrice: row.PRICE
+        }
+      })
+    })
+    console.log(allbids)
+    return allbids
+  };
+
+  db.query(query, (err, rows, fields) => {
     if (err) throw err;
-    // res.render('index', { title: '這是 mysql + node.js 示範版本', 'items': rows });   
-    return res.status(200).json(rows);
+    // console.log(rows)
+    const allPosts = rows.map(async (row) => {
+      var bids = await postBids(row.POST_TITLE)
+      console.log(bids)
+      return {
+        postSeller: row.SELLER_NAME,
+        postTitle: row.POST_TITLE,
+        postContent: row.CONTENT,
+        recommendedPrice: row.PRICE, // 還沒拿到
+        postImg: row.IMAGE, // 還沒拿到
+        bidPrices: bids
+      }
+    })
+    return res.status(200).json({ posts: allPosts });
+    // console.log(`allPosts:\n`)
+    // console.log(allPosts)
   });
-  db.end();
+  // db.end();
 }

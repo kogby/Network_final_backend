@@ -76,6 +76,45 @@
         "responses": {}
       }
     },
+    "/posts/post": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "description": "Add a new post",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "seller": {
+                  "example": "any"
+                },
+                "title": {
+                  "example": "any"
+                },
+                "content": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "img": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/posts/{id}": {
       "delete": {
         "tags": [
