@@ -7,6 +7,8 @@ import mysql from "mysql";
 import swaggerUi from "swagger-ui-express";
 import fs from "fs";
 import postRoutes from "./routes/post.js";
+import bidRoutes from "./routes/bid.js";
+// import utilRoutes from "./routes/util.js";
 
 dotenv.config(); //這樣才能讀.env檔案
 
@@ -30,6 +32,8 @@ app.use(
 );
 
 app.use("/posts", postRoutes);
+app.use("/bids", bidRoutes);
+// app.use("/", utilRoutes);
 
 
 
@@ -54,13 +58,13 @@ var db = mysql.createConnection({
   port: process.env.DB_PORT,
   user: "root",
   password: "123456",
-  database: "shoppingDB"
+  database: "ShopDB"
 })
 
 db.connect();
 db.query("SHOW tables", function (err, result) {
   if (err) throw err;
-  console.log(result);
+  // console.log(result);
 });
 db.end();
 

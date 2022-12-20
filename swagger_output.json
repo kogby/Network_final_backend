@@ -59,7 +59,7 @@
         }
       }
     },
-    "/posts/{name}": {
+    "/posts/{myName}": {
       "get": {
         "tags": [
           "Posts"
@@ -67,13 +67,34 @@
         "description": "Get one",
         "parameters": [
           {
-            "name": "name",
+            "name": "myName",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {}
+      }
+    },
+    "/posts/search/{title}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "description": "Search posts",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/posts/post": {
@@ -89,7 +110,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "seller": {
+                "myName": {
                   "example": "any"
                 },
                 "title": {
@@ -130,6 +151,60 @@
           }
         ],
         "responses": {}
+      }
+    },
+    "/bids/{title}": {
+      "get": {
+        "tags": [
+          "Bids"
+        ],
+        "description": "Get bids from one post",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/bids/title": {
+      "post": {
+        "tags": [
+          "Bids"
+        ],
+        "description": "Add a new bid for a post",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "myName": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "title": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   }
