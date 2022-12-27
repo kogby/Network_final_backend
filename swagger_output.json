@@ -29,6 +29,10 @@
     {
       "name": "Tracks",
       "description": "Tracks router"
+    },
+    {
+      "name": "Rates",
+      "description": "Rates router"
     }
   ],
   "schemes": [
@@ -237,7 +241,7 @@
         "tags": [
           "Tracks"
         ],
-        "description": "Add a track on an item",
+        "description": "Add a track ㄔㄟ an item",
         "parameters": [
           {
             "name": "body",
@@ -260,6 +264,46 @@
             "description": "OK"
           }
         }
+      }
+    },
+    "/tracks/{title}/{myName}": {
+      "delete": {
+        "tags": [
+          "Tracks"
+        ],
+        "description": "Delete one",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "myName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/profile/{myName}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Get user",
+        "parameters": [
+          {
+            "name": "myName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
       }
     }
   }
