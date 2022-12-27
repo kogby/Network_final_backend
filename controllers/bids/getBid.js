@@ -4,8 +4,8 @@ export const getBid = async (req, res) => {
   /* #swagger.tags = ['Bids']
   #swagger.description = 'Get bids from one post' */
   var query = `
-  SELECT * FROM ITEM JOIN BID ON ITEM.ITEM_ID = BID.ITEM_ID 
-  JOIN POST ON ITEM.POST_TITLE = ITEM.POST_TITLE WHERE POST.POST_TITLE =?`;
+  SELECT * FROM ITEM JOIN BID ON item_id = bid_item_id 
+  JOIN POST ON item_post_title = post_title WHERE post_title =?`;
 
   var db = mysql.createConnection({
     // connectTimeout  : 60 * 60 * 1000,
@@ -18,14 +18,15 @@ export const getBid = async (req, res) => {
     multipleStatements: true
   })
   db.connect();
-
-  db.query(query, [req.params.title], (err, rows) => {
+  
+  var string_ = req.params.title.replace('}', '')
+  db.query(query, [string_], (err, rows) => {
     if (err) throw err;
     console.log(rows)
     const allbids = rows.map((row) => {
       return {
-        whoBids: row.USER_NAME,
-        bPrice: row.PRICE
+        whoBids: row.bid_user_name,
+        bPrice: row.price
       }
     })
     Promise.all(allbids).then((results)=>{

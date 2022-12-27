@@ -3,7 +3,7 @@ import mysql from "mysql"
 export const getPersonPosts = async (req, res) => {
   /* #swagger.tags = ['Posts']
   #swagger.description = 'Get one's posts' */
-  var query = 'SELECT * FROM ITEM INNER JOIN POST ON item_post_title = post_title WHERE SELLER_NAME = ? ';
+  var query = 'SELECT * FROM ITEM INNER JOIN POST ON item_post_title = post_title WHERE post_seller_name = ? ';
 
   // 模板語法: `stringstring str str ${variable}` // 要是``，"" 沒有模板語法
 
@@ -22,11 +22,11 @@ export const getPersonPosts = async (req, res) => {
     if (err) throw err;
     const allPosts = rows.map(async (row) => {
       return {
-        postSeller: row.SELLER_NAME,
-        postTitle: row.POST_TITLE,
-        postContent: row.CONTENT,
-        recommendedPrice: row.PRICE, 
-        postImg: row.IMAGE, 
+        postSeller: row.seller_name,
+        postTitle: row.post_title,
+        postContent: row.content,
+        recommendedPrice: row.price, 
+        postImg: row.image, 
       }
     })
 

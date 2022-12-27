@@ -190,7 +190,7 @@
                 "myName": {
                   "example": "any"
                 },
-                "price": {
+                "bPrice": {
                   "example": "any"
                 },
                 "title": {

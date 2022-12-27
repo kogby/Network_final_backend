@@ -8,8 +8,8 @@ export const addPost = async (req, res) => {
     const img = req.body.img
     /* #swagger.tags = ['Posts']
     #swagger.description = 'Add a new post' */
-    var query = `INSERT INTO POST (POST_TITLE, CONTENT, SELLER_NAME) VALUES ( ? , ? , ?);
-    INSERT INTO ITEM (PRICE, IMAGE, POST_TITLE) VALUES (?,?,?);
+    var query = `INSERT INTO POST (post_title, content, post_seller_name) VALUES ( ? , ? , ?);
+    INSERT INTO ITEM (price, image, item_post_title) VALUES (?,?,?);
     `;
 
     var db = mysql.createConnection({
@@ -23,6 +23,7 @@ export const addPost = async (req, res) => {
     })
 
     db.connect();
+    console.log(seller)
     db.query(query, [post_title, content, seller, price, img, post_title], (err, rows) => {
         if (err) throw err
         // console.log(`SQL query: ${query}`)
