@@ -25,6 +25,10 @@
     {
       "name": "Posts",
       "description": "Posts router"
+    },
+    {
+      "name": "Tracks",
+      "description": "Tracks router"
     }
   ],
   "schemes": [
@@ -141,7 +145,7 @@
         "tags": [
           "Posts"
         ],
-        "description": "Get all posts",
+        "description": "Delete certain post",
         "parameters": [
           {
             "name": "id",
@@ -150,7 +154,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/bids/{title}": {
@@ -191,6 +199,53 @@
                   "example": "any"
                 },
                 "bPrice": {
+                  "example": "any"
+                },
+                "title": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/tracks/{title}": {
+      "get": {
+        "tags": [
+          "Tracks"
+        ],
+        "description": "Get who",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/tracks/title": {
+      "post": {
+        "tags": [
+          "Tracks"
+        ],
+        "description": "Add a track on an item",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "myName": {
                   "example": "any"
                 },
                 "title": {

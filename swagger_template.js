@@ -15,6 +15,14 @@ const template = {
             name: "Posts",
             description: "Posts router",
         },
+        {
+            name: "Tracks",
+            description: "Tracks router",
+        },
+        {
+            name: "Rates",
+            description: "Rates router",
+        }
     ],
     produces: ["application/json"],
     definitions: {},
