@@ -22,7 +22,7 @@ export const getPersonPosts = async (req, res) => {
     if (err) throw err;
     const allPosts = rows.map(async (row) => {
       return {
-        postSeller: row.seller_name,
+        postSeller: row.post_seller_name,
         postTitle: row.post_title,
         postContent: row.content,
         recommendedPrice: row.price, 
