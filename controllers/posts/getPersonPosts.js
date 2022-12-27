@@ -3,7 +3,7 @@ import mysql from "mysql"
 export const getPersonPosts = async (req, res) => {
   /* #swagger.tags = ['Posts']
   #swagger.description = 'Get one's posts' */
-  var query = 'SELECT * FROM ITEM INNER JOIN POST ON ITEM.POST_TITLE = POST.POST_TITLE WHERE SELLER_NAME = ? ';
+  var query = 'SELECT * FROM ITEM INNER JOIN POST ON item_post_title = post_title WHERE SELLER_NAME = ? ';
 
   // 模板語法: `stringstring str str ${variable}` // 要是``，"" 沒有模板語法
 
