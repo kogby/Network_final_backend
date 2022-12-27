@@ -236,7 +236,7 @@
         "responses": {}
       }
     },
-    "/tracks/title": {
+    "/tracks/": {
       "post": {
         "tags": [
           "Tracks"
@@ -304,6 +304,42 @@
           }
         ],
         "responses": {}
+      }
+    },
+    "/profile/becomeSeller": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Become a seller and add information",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "myName": {
+                  "example": "any"
+                },
+                "MyProfile": {
+                  "example": "any"
+                },
+                "realName": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   }

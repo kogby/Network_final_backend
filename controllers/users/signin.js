@@ -19,7 +19,7 @@ export const signin = async (req, res) => {
   db.query(query, [req.params.myName], (err, rows) => {
     if (err) throw err;
     console.log(rows)
-    return res.status(200).json({data: rows});
+    return res.status(200).json({profile: rows[0] });
     })
   // db.end();
 }

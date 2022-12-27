@@ -5,7 +5,7 @@ import { deleteTrack } from "../controllers/track/deleteTrack.js";
 const router = express.Router();
 
 router.get("/:title", getTracks);
-router.post("/title", addTrack);
+router.post("/", addTrack);
 router.delete("/:title/:myName", deleteTrack);
 
 export default router;
