@@ -24,6 +24,7 @@ export const addUser = async (req, res) => {
 
     db.query(query, [name ,phone_num, account, password,name], (err, rows) => {
       if (err) throw err
+      console.log(phone_num)
       // console.log(`SQL query: ${query}`)
       return res.status(200).json({message: "success"});
     });   
