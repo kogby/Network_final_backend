@@ -4,8 +4,8 @@ export const addRate = async (req, res) => {
     const name  = req.body.myName
     const post_title = req.body.title
     /* #swagger.tags = ['Rates']
-    #swagger.description = 'Add a track ㄔㄟ an item' */
-    var query = `INSERT INTO TRACK (track_item_id, track_user_name) VALUES ( ? , ?);`;
+    #swagger.description = 'Add a rate to a post' */
+    var query = `INSERT INTO RATING (content, score, track_user_name) VALUES ( 'none', ? , ?);`;
     var query_2 = `SELECT * FROM ITEM JOIN POST ON item_post_title = post_title WHERE post_title = ?`
 
     var db = mysql.createConnection({

@@ -4,7 +4,7 @@ export const signin = async (req, res) => {
   /* #swagger.tags = ['Users']
   #swagger.description = 'Get user's data' */
   var query = `
-  SELECT account, phone_num, password, role FROM USER WHERE user_name =?`;
+  SELECT account, phone_num, password, role FROM USER WHERE user_name = ? `;
 
   var db = mysql.createConnection({
     host: "127.0.0.1",
@@ -19,7 +19,7 @@ export const signin = async (req, res) => {
   db.query(query, [req.params.myName], (err, rows) => {
     if (err) throw err;
     console.log(rows)
-    return res.status(200).json({profile: rows[0] });
+    return res.status(200).json({profile: rows[0] ,message: "success"});
     })
   // db.end();
 }

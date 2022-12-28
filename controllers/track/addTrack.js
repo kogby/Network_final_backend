@@ -4,7 +4,7 @@ export const addTrack = async (req, res) => {
     const name  = req.body.myName
     const post_title = req.body.title
     /* #swagger.tags = ['Tracks']
-    #swagger.description = 'Add a track ㄔㄟ an item' */
+    #swagger.description = 'Add a track to an item' */
     var query = `INSERT INTO TRACK (track_item_id, track_user_name) VALUES ( ? , ?);`;
     var query_2 = `SELECT * FROM ITEM JOIN POST ON item_post_title = post_title WHERE post_title = ?`
 

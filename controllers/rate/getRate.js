@@ -1,6 +1,6 @@
 import mysql from "mysql"
 
-export const getRates = async (req, res) => {
+export const getRate = async (req, res) => {
   /* #swagger.tags = ['Rates']
   #swagger.description = 'Get who's tracking this item' */
   var query = `

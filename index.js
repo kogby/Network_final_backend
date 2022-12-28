@@ -10,6 +10,7 @@ import postRoutes from "./routes/post.js";
 import bidRoutes from "./routes/bid.js";
 import trackRoutes from "./routes/track.js";
 import userRoutes from "./routes/user.js";
+import rateRoutes from "./routes/rate.js";
 // import utilRoutes from "./routes/util.js";
 
 dotenv.config(); //這樣才能讀.env檔案
@@ -37,6 +38,7 @@ app.use("/posts", postRoutes);
 app.use("/bids", bidRoutes);
 app.use("/tracks", trackRoutes);
 app.use("/profile", userRoutes);
+app.use("/rates", rateRoutes);
 // app.use("/", utilRoutes);
 
 

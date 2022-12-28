@@ -236,6 +236,23 @@
         "responses": {}
       }
     },
+    "/tracks/name/{myName}": {
+      "get": {
+        "tags": [
+          "Tracks"
+        ],
+        "description": "Get one\\'s tracking list ",
+        "parameters": [
+          {
+            "name": "myName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/tracks/": {
       "post": {
         "tags": [
